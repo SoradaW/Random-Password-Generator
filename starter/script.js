@@ -31,20 +31,25 @@ function getPasswordOptions() {
   // Loop if answer is outside parameters
   // The 'while' loop, loops through a block of code as long as a specified condition is true
   while(confirmLength <=10 || confirmLength >= 64) {
-  alert("Password lenght must be between 10-64 characters. Try again!");
+  alert("Password lenght must be between 10-64 characters \nTry again!");
   var confirmLength = (prompt("How many characters of password would you like? Choose between 10 up to 64"));
   }
   // Repeat back user answer // option
   alert("Your password will be ${confirmLenght} characters");
 }
   // Determine parameters of password 
-  var confirmSpecialCharacters = confirm("Would you like to include special characters?" );
-  var confirmNumericCharacters = confirm("Would you like to include numeric characters?" );
-  var confirmLowerCasedCharacters = confirm("Would you like to include lower case characters?" );
-  var confirmUpperCasedCharacters = confirm("Would you like to include upper case characters?" );
+  var confirmSpecialCharacters = confirm("Would you like to include \nSpecial characters?" );
+  var confirmNumericCharacters = confirm("Would you like to include \nNumeric characters?" );
+  var confirmLowerCasedCharacters = confirm("Would you like to include \nLowercase characters?" );
+  var confirmUpperCasedCharacters = confirm("Would you like to include \nUppercase characters?" );
   // Loop if answer is outside parameters
   while(confirmSpecialCharacters === false && confirmNumericCharacters === false && confirmLowerCasedCharacters === false && confirmUpperCasedCharacters === false) {
-    alert ("At least one character type should be selected")
+    alert ("At least one character type should be selected \nTry again!");
+    // Loop again
+    var confirmSpecialCharacters = confirm("Would you like to include \nSpecial characters?" );
+    var confirmNumericCharacters = confirm("Would you like to include \nNumeric characters?" );
+    var confirmLowerCasedCharacters = confirm("Would you like to include \nLowercase characters?" );
+    var confirmUpperCasedCharacters = confirm("Would you like to include \nUppercase characters?" );
   }
 
 
