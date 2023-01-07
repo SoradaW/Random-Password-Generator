@@ -22,12 +22,12 @@ var confirmNumericCharacters;
 var confirmLowerCasedCharacters;
 var confirmUpperCasedCharacters;
 
-// Function to prompt user for password options confirm lenght and characters
+//*! Function to prompt user for password options confirm lenght and characters
 function getPasswordOptions() {
   var confirmLength = (prompt("How many characters of password would you like? \nChoose between 10 up to 64"));
   // Loop if answer is outside parameters
   // The 'while' loop, loops through a block of code as long as a specified condition is true
-  while(confirmLength <=10 || confirmLength >= 64) {
+  while(confirmLength <=9 || confirmLength >= 65) {
   alert("Password length must be between 10-64 characters \nTry again!");
   // Try again!
   var confirmLength = (prompt("How many characters of password would you like? \nChoose between 10 up to 64"));
@@ -41,7 +41,8 @@ function getPasswordOptions() {
   var confirmLowerCasedCharacters = confirm("Would you like to include \nLowercase characters?" );
   var confirmUpperCasedCharacters = confirm("Would you like to include \nUppercase characters?" );
   // Loop if answer is outside parameters
-  while(confirmSpecialCharacters === false && confirmNumericCharacters === false && confirmLowerCasedCharacters === false && confirmUpperCasedCharacters === false) {
+  // using ! will return false same as === false
+  while(!confirmSpecialCharacters && !confirmNumericCharacters && confirmLowerCasedCharacters === false && confirmUpperCasedCharacters === false) {
     alert ("At least one character type should be selected \nTry again!");
     // Try again!
     var confirmSpecialCharacters = confirm("Would you like to include \nSpecial characters?" );
@@ -49,49 +50,49 @@ function getPasswordOptions() {
     var confirmLowerCasedCharacters = confirm("Would you like to include \nLowercase characters?" );
     var confirmUpperCasedCharacters = confirm("Would you like to include \nUppercase characters?" );
   }
-  return getPasswordOptions; //Optional
+  // Add action to password parameters
+  var passwordCharacters = []
+  if (confirmSpecialCharacters) {
+    passwordCharacters = passwordCharacters.concat(specialCharacters)
+  }
+  if (confirmNumericCharacters) {
+    passwordCharacters = passwordCharacters.concat(numericCharacters)
+  }      
+  if (confirmLowerCasedCharacters) {
+    passwordCharacters = passwordCharacters.concat(lowerCasedCharacters)
+  }
+  if (confirmUpperCasedCharacters) {
+    passwordCharacters = passwordCharacters.concat(upperCasedCharacters)
+  }
+  console.log(passwordCharacters)
 }
-
-    // Assign an action to the password parameters
-    var passwordCharacters = []
-    if (confirmSpecialCharacters) {
-      passwordCharacters = passwordCharacters.concat(specialCharacters)
-    }
-    if (confirmNumericCharacters) {
-      passwordCharacters = passwordCharacters.concat(numericCharacters)
-    }
-    if (confirmLowerCasedCharacters) {
-      passwordCharacters = passwordCharacters.concat(lowerCasedCharacters)
-    }
-    if (confirmUpperCasedCharacters) {
-      passwordCharacters = passwordCharacters.concat(upperCasedCharacters)
-    }
-    // Logs password characters
-    console.log (passwordCharacters)
-
-    // Empty string, to be fill base on for loop selected random characters from array
-    var randomPassword = ""
-
-    for (var i = 0; i < confirmLength; i++) {
-      randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
-
-      console.log(randomPassword)
-    }
-
-//  return randomPassword;
-
-// Call getPasswordOptions function
+// Call the function
 getPasswordOptions();
 
-// Function for getting a random element from an array
-function getRandom(arr) {
+//*! Function for getting a random element from an array
+// Empty string to be fill basd on for loop selecting random characters from the array
+var randomPassword = ""
 
-}
+function getRandom(arr) {
+  // Loop through the selected array
+  //using Math.random() to create a random password
+  for (var i = 0; i <= arr.length; i++) {
+    var randomPassword = randomPassword + passwordCharacters [Math.floor(Math.random() * passwordCharacters.length)];
+    //confirmLength += confirmLength.substring(randomPassword, randomPassword +1);
+    //console.log(arr[i]);
+    }
+    return randomPassword;
+   // console.log("here is password ");
+  } 
+//getRandom();
 
 // Function to generate password with user input
-function generatePassword() {
+function generatePassword() {}
+    
+  
 
-}
+//showing password in the input box by using ID password and set a constant of the ID
+document.getElementById("password").value = password;
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -105,4 +106,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+//generateBtn.addEventListener('click', writePassword);
