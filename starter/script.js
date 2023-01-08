@@ -1,33 +1,38 @@
-// Password criteria
-var passwordCriteria = {
+// Password criterianumericChar
+var pwdCriteria = {
   // Array of special characters to be included in password
-  specialCharacters: [
+  pwdSpecialChar: [
     '@', '%', '+', '\\', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.'
   ],// 23 characters
   // Array of numeric characters to be included in password
-  numericCharacters: [
+  pwdNumericChar: [
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
   ],// 10 characters
   // Array of lowercase characters to be included in password
-  lowerCasedCharacters: [
+  pwdLowerCasedChar: [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
   ],
   // Array of uppercase characters to be included in password
-  upperCasedCharacters: [
+  pwdUpperCasedChar: [
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
   ],
-  passwordLenght: 0,
+  pwdLenght: 0,
 }
-// Initialise characters
-passwordCriteria.passwordLenght = 0;
-// Varible declaration to collect input from user prompts
-var confirmLength = 0;
-var confirmSpecialCharacters;
-var confirmNumericCharacters;
-var confirmLowerCasedCharacters;
-var confirmUpperCasedCharacters;
-// Hold the password to be generated upon condition
-var confirmChoices = "";
+
+// Function to handle the operations to generate a new password
+//! Function to generate password with user input
+function generatePassword() {
+  // Initialise characters
+  pwdCriteria.pwdLenght = 0;
+
+  // Varible declaration to collect input from user prompts
+  var confirmLength = 0;
+  var confirmSpecialChar;
+  var confirmNumericChar;
+  var confirmLowerCasedChar;
+  var confirmUpperCasedChar;
+  // Hold the password to be generated upon condition and return
+  var pwdResult = "";
 
 
 //! Function to prompt user for password options, confirm lenght and characters
@@ -57,34 +62,34 @@ function getPasswordOptions() {
           // Call prompts Try again! using internal function to show prompt
           showPrompts();
           // Keep adding password criteria until passwordLength = length that user choosen
-          while (passwordCriteria.passwordLenght < confirmLength){
+          while (pwdCriteria.pwdLenght < confirmLength){
             // Loop if answer is outside parameters
             // By using ! will return false same as === false
-            if (!confirmSpecialCharacters && !confirmNumericCharacters && confirmLowerCasedCharacters === false && confirmUpperCasedCharacters === false) {
+            if (!confirmSpecialChar && !confirmNumericChar && confirmLowerCasedChar === false && confirmUpperCasedChar === false) {
             alert ("At least one character type should be selected \nTry again!")
             showPrompts();
             }
             else {
               // If only 1 option have been selected
-              if (confirmSpecialCharacters === true && passwordCriteria.passwordLenght < confirmLength) {
-                var spcChar = passwordCriteria.specialCharacters[Math.floor(Math.random() * 23)]
-                confirmChoices = confirmChoices + spcChar;
-                passwordCriteria.passwordLenght++;
+              if (confirmSpecialChar === true && pwdCriteria.pwdLenght < confirmLength) {
+                var spcChar = pwdCriteria.pwdSpecialChar[Math.floor(Math.random() * 23)]
+                pwdResult = pwdResult + spcChar;
+                pwdCriteria.pwdLenght++;
               } 
-              if (confirmNumericCharacters === true && passwordCriteria.passwordLenght < confirmLength) {
-                var numChar = passwordCriteria.numericCharacters[Math.floor(Math.random() * 23)]
-                confirmChoices = confirmChoices + numChar;
-                passwordCriteria.passwordLenght++;
+              if (confirmNumericChar === true && pwdCriteria.pwdLenght < confirmLength) {
+                var numChar = pwdCriteria.pwdNumericChar[Math.floor(Math.random() * 23)]
+                pwdResult = pwdResult + numChar;
+                pwdCriteria.pwdLenght++;
               }  
-              if (confirmLowerCasedCharacters === true && passwordCriteria.passwordLenght < confirmLength) {
-                var lowChar = passwordCriteria.lowerCasedCharacters[Math.floor(Math.random() * 23)]
-                confirmChoices = confirmChoices + lowChar;
-                passwordCriteria.passwordLenght++;
+              if (confirmLowerCasedChar === true && pwdCriteria.pwdLenght < confirmLength) {
+                var lowChar = pwdCriteria.pwdLowerCasedChar[Math.floor(Math.random() * 23)]
+                pwdResult = pwdResult + lowChar;
+                pwdCriteria.pwdLenght++;
               }  
-              if (confirmUpperCasedCharacters === true && passwordCriteria.passwordLenght < confirmLength) {
-                var upChar = passwordCriteria.upperCasedCharacters[Math.floor(Math.random() * 23)]
-                confirmChoices = confirmChoices + upChar;
-                passwordCriteria.passwordLenght++;
+              if (confirmUpperCasedChar === true && pwdCriteria.pwdLenght < confirmLength) {
+                var upChar = pwdCriteria.pwdUpperCasedChar[Math.floor(Math.random() * 23)]
+                pwdResult = pwdResult + upChar;
+                pwdCriteria.pwdLenght++;
               }   
             }
           }
@@ -92,15 +97,15 @@ function getPasswordOptions() {
       }  
     
   // Calling function to return back password
-  return confirmChoices;
+  return pwdResult;
 
   // Function to prompt the user criteria
       // Determine characters of password 
       function showPrompts() {
-      confirmSpecialCharacters = confirm("Would you like to include \nSpecial characters?" );
-      confirmNumericCharacters = confirm("Would you like to include \nNumeric characters?" );
-      confirmLowerCasedCharacters = confirm("Would you like to include \nLowercase characters?" );
-      confirmUpperCasedCharacters = confirm("Would you like to include \nUppercase characters?" );
+      confirmSpecialChar = confirm("Would you like to include \nSpecial characters?" );
+      confirmNumericChar = confirm("Would you like to include \nNumeric characters?" );
+      confirmLowerCasedChar = confirm("Would you like to include \nLowercase characters?" );
+      confirmUpperCasedChar = confirm("Would you like to include \nUppercase characters?" );
       }
     } 
 
@@ -113,14 +118,14 @@ function getPasswordOptions() {
   //console.log(confirmLength);
 
 // Call the function
-getPasswordOptions();
+//getPasswordOptions();
 
 //! Function for getting a random element from an array
-function getRandom(specialCharacters, numericCharacters, lowerCasedCharacters, upperCasedCharacters) {
-  //return specialCharacters[Math.floor(Math.random() * specialCharacters.length)], 
- // numericCharacters[Math.floor(Math.random() * numericCharacters.length)], 
- // lowerCasedCharacters[Math.floor(Math.random() * lowerCasedCharacters.length)],
- // upperCasedCharacters[Math.floor(Math.random() * upperCasedCharacters.length)];
+function getRandom(specialChar, numericChar, lowerCasedChar, upperCasedChar) {
+  //return specialChar[Math.floor(Math.random() * specialChar.length)], 
+ // numericChar[Math.floor(Math.random() * numericChar.length)], 
+ // lowerCasedChar[Math.floor(Math.random() * lowerCasedChar.length)],
+ // upperCasedChar[Math.floor(Math.random() * upperCasedChar.length)];
 }
 getRandom();
 
