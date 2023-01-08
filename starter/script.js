@@ -119,4 +119,13 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+generateBtn.addEventListener("click", writePassword);
+
+// Making the 'copy' button effective by using document.execCommand
+function copyPassword() {
+  var copyBtn  = document.getElementById("password");
+    copyBtn.select();
+    copyBtn.setSelectionRange(0, 999);
+    document.execCommand("copy");
+    alert("Password Copied");
+}    
