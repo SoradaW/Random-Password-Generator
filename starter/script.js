@@ -34,33 +34,33 @@ function generatePassword() {
   // Hold the password to be generated upon condition and return
   var pwdResult = "";
 
+  // Confirm password length
+  while (confirmLength < 10 || confirmLength > 64){
+    confirmLength = prompt("How many characters of password would you like? \nChoose between 10 and 64");
+  }
+  // Confirm back the answer of how many characters that user will have
+  alert ("Your password length is " + confirmLength + " characters");
 
-//! Function to prompt user for password options, confirm lenght and characters
-function getPasswordOptions() {
-  var confirmLength = prompt("How many characters of password would you like? \nChoose between 10 and 64");
-    // Loop if answer is outside parameters
-    // The 'while' loop, loops through a block of code as long as a specified condition is true
-    while (confirmLength < 10 || confirmLength > 64 || !confirmLength){
-    alert ("Please choose between 10 and 64 characters \nTry again!");
-    // Try again!
-    var confirmLength = (prompt("How many characters of password would you like? \nChoose between 10 and 64"));
+    // If user click cancel
+    if (confirmLength === null){
+      return;
     }
-    // Confirm back the answer of how many characters that user will have
-    alert ("Your password length is " + confirmLength + " characters");
-
-      // If user click cancel
-      if (confirmLength === null){
+    else {
+      // Checking if user enter an integer? using isFinite object
+      if (!isFinite(confirmLength)){
+        alert("You did not enter a number \nTry again!");
         return;
       }
       else {
-        // Checking if user enter an integer? using isFinite object
-        if (!isFinite(confirmLength)){
-          alert("You did not enter a number \nTry again!");
+        // Checking if password length met the criteria? 
+        if (confirmLength < 10 || confirmLength > 64) {
+          alert ("Please choose between 10 and 64 characters \nTry again!");
           return;
-        }
+          }
         else {
           // Call prompts Try again! using internal function to show prompt
           showPrompts();
+
           // Keep adding password criteria until passwordLength = length that user choosen
           while (pwdCriteria.pwdLenght < confirmLength){
             // Loop if answer is outside parameters
@@ -72,22 +72,22 @@ function getPasswordOptions() {
             else {
               // If only 1 option have been selected
               if (confirmSpecialChar === true && pwdCriteria.pwdLenght < confirmLength) {
-                var spcChar = pwdCriteria.pwdSpecialChar[Math.floor(Math.random() * 23)]
-                pwdResult = pwdResult + spcChar;
+                var speChar = pwdCriteria.pwdSpecialChar[Math.floor(Math.random() * 23)]
+                pwdResult = pwdResult + speChar;
                 pwdCriteria.pwdLenght++;
               } 
               if (confirmNumericChar === true && pwdCriteria.pwdLenght < confirmLength) {
-                var numChar = pwdCriteria.pwdNumericChar[Math.floor(Math.random() * 23)]
+                var numChar = pwdCriteria.pwdNumericChar[Math.floor(Math.random() * 10)]
                 pwdResult = pwdResult + numChar;
                 pwdCriteria.pwdLenght++;
               }  
               if (confirmLowerCasedChar === true && pwdCriteria.pwdLenght < confirmLength) {
-                var lowChar = pwdCriteria.pwdLowerCasedChar[Math.floor(Math.random() * 23)]
+                var lowChar = pwdCriteria.pwdLowerCasedChar[Math.floor(Math.random() * 26)]
                 pwdResult = pwdResult + lowChar;
                 pwdCriteria.pwdLenght++;
               }  
               if (confirmUpperCasedChar === true && pwdCriteria.pwdLenght < confirmLength) {
-                var upChar = pwdCriteria.pwdUpperCasedChar[Math.floor(Math.random() * 23)]
+                var upChar = pwdCriteria.pwdUpperCasedChar[Math.floor(Math.random() * 26)]
                 pwdResult = pwdResult + upChar;
                 pwdCriteria.pwdLenght++;
               }   
@@ -95,19 +95,19 @@ function getPasswordOptions() {
           }
         }
       }  
-    
-  // Calling function to return back password
-  return pwdResult;
+    }
+    // Calling function to return back password
+    return pwdResult;
 
-  // Function to prompt the user criteria
-      // Determine characters of password 
-      function showPrompts() {
+    // Function to prompt the user criteria
+    // Determine characters of password 
+    function showPrompts() {
       confirmSpecialChar = confirm("Would you like to include \nSpecial characters?" );
       confirmNumericChar = confirm("Would you like to include \nNumeric characters?" );
       confirmLowerCasedChar = confirm("Would you like to include \nLowercase characters?" );
       confirmUpperCasedChar = confirm("Would you like to include \nUppercase characters?" );
-      }
-    } 
+    }
+  } 
 
    // var passwordTest = "";
     //for (let i = 0; i < confirmLength; i ++){
