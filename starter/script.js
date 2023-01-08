@@ -24,7 +24,6 @@ var pwdCriteria = {
 function generatePassword() {
   // Initialise characters
   pwdCriteria.pwdLenght = 0;
-
   // Varible declaration to collect input from user prompts
   var confirmLength = 0;
   var confirmSpecialChar;
@@ -37,31 +36,29 @@ function generatePassword() {
   // Confirm password length
   while (confirmLength < 10 || confirmLength > 64){
     confirmLength = prompt("How many characters of password would you like? \nChoose between 10 and 64");
-  }
-  // Confirm back the answer of how many characters that user will have
-  alert ("Your password length is " + confirmLength + " characters");
 
     // If user click cancel
     if (confirmLength === null){
-      return;
+      alert("Try again!");
+      return "Your secure password";
     }
     else {
       // Checking if user enter an integer? using isFinite object
       if (!isFinite(confirmLength)){
         alert("You did not enter a number \nTry again!");
-        return;
+        return "Your secure password";
       }
       else {
         // Checking if password length met the criteria? 
         if (confirmLength < 10 || confirmLength > 64) {
           alert ("Please choose between 10 and 64 characters \nTry again!");
-          return;
+          return "Your secure password";
           }
         else {
           // Call prompts Try again! using internal function to show prompt
           showPrompts();
 
-          // Keep adding password criteria until passwordLength = length that user choosen
+          // Keep adding password criteria until passwordLength =length that user choosen
           while (pwdCriteria.pwdLenght < confirmLength){
             // Loop if answer is outside parameters
             // By using ! will return false same as === false
@@ -70,7 +67,7 @@ function generatePassword() {
             showPrompts();
             }
             else {
-              // If only 1 option have been selected
+              // If only 1 option have been selected then randomly added characters up to =length
               if (confirmSpecialChar === true && pwdCriteria.pwdLenght < confirmLength) {
                 var speChar = pwdCriteria.pwdSpecialChar[Math.floor(Math.random() * 23)]
                 pwdResult = pwdResult + speChar;
@@ -108,17 +105,7 @@ function generatePassword() {
       confirmUpperCasedChar = confirm("Would you like to include \nUppercase characters?" );
     }
   } 
-
-   // var passwordTest = "";
-    //for (let i = 0; i < confirmLength; i ++){
-    //  passwordTest += getPasswordOptions[Math.floor(Math.random() * getPasswordOptions.length)]
-   // }
-   // return passwordTest;}
-
-  //console.log(confirmLength);
-
-// Call the function
-//getPasswordOptions();
+}
 
 //! Function for getting a random element from an array
 function getRandom(specialChar, numericChar, lowerCasedChar, upperCasedChar) {
@@ -130,9 +117,7 @@ function getRandom(specialChar, numericChar, lowerCasedChar, upperCasedChar) {
 getRandom();
 
 //! Function to generate password with user input
-function generatePassword() {
- 
-}
+//function generatePassword() {}
     
 // Targeting all necessary HTML elements using unique identifiers
 //! Get references to the #generate element
