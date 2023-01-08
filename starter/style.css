@@ -2,6 +2,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: "Kodchasan", sans-serif;
 }
 
 html,
@@ -14,7 +15,7 @@ body,
 
 body {
   font-family: sans-serif;
-  background-color: #f9fbfd;
+  background-color: rgba(147, 132, 104, 0.434);
 }
 
 .wrapper {
@@ -74,8 +75,8 @@ header {
 
 .btn {
   border: none;
-  background-color: hsl(360, 91%, 36%);
-  border-radius: 25px;
+  background-color: rgb(139, 38, 38);
+  border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
   color: hsl(0, 0%, 100%);
   display: inline-block;
