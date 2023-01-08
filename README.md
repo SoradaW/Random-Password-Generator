@@ -2,27 +2,29 @@
 
 ## Intermediate JavaScript
  
-Create an application that an employee can use to generate a random password based on criteria below. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript. It will have a clean and polished user interface that is responsive, ensuring that it adapts to multiple screen sizes.
+Creates an application to generate a random password based on criteria as the following. 
+1. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript. 
+2. It will have a clean and polished user interface that is responsive, ensuring that it adapts to multiple screen sizes.
 
 ## Instructions
 
 The following image shows the web application's appearance and functionality:
 
-![password generator demo](./assets/05-javascript-challenge-demo.png)
-
+![password generator demo](./image/deployed-page.jpg)
 
 * Generate a password when the button is clicked
   * Present a series of prompts for password criteria
     * Length of password
-      * At least 10 characters but no more than 64.
+      * Between 10 and 64 characters
     * Character types
       * Lowercase
       * Uppercase
       * Numeric
       * Special characters ($@%&*, etc)
   * Code should validate for each input and at least one character type should be selected
-  * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
+  * Once prompts are answered then the password should be generated and displayed 
+  * Once click 'copy' the password should be copied to clipboard
 
 ## Copyright
 
-© 2022 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+© 2023 || Sorada Wright
