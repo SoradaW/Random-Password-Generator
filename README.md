@@ -24,6 +24,7 @@ The following image shows the web application's appearance and functionality:
   * Code should validate for each input and at least one character type should be selected
   * Once prompts are answered then the password should be generated and displayed 
   * Once click 'copy' the password should be copied to clipboard
+  * Page should not produce any errors in the console when inspecting in Chrome DevTools
 
 ## Copyright
 
