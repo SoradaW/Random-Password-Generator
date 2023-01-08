@@ -1,4 +1,4 @@
-// Password criterianumericChar
+// Password criteria
 var pwdCriteria = {
   // Array of special characters to be included in password
   pwdSpecialChar: [
@@ -20,7 +20,7 @@ var pwdCriteria = {
 }
 
 // Function to handle the operations to generate a new password
-//! Function to generate password with user input
+// Function to generate password with user input
 function generatePassword() {
   // Initialise characters
   pwdCriteria.pwdLenght = 0;
@@ -43,7 +43,7 @@ function generatePassword() {
       return "Your secure password";
     }
     else {
-      // Checking if user enter an integer? using isFinite object
+      // Checking if user enter an integer by using isFinite object
       if (!isFinite(confirmLength)){
         alert("You did not enter a number \nTry again!");
         return "Your secure password";
@@ -55,13 +55,12 @@ function generatePassword() {
           return "Your secure password";
           }
         else {
-          // Call prompts Try again! using internal function to show prompt
-          showPrompts();
+          // Call prompts to try again by using internal function to show prompt
+          showPrompts(); // Declared fuction below
 
-          // Keep adding password criteria until passwordLength =length that user choosen
+          // Keep adding password criteria until confirmLength =length that user input
           while (pwdCriteria.pwdLenght < confirmLength){
-            // Loop if answer is outside parameters
-            // By using ! will return false same as === false
+            // Loop if answer is outside parameters (by using ! will return false same as === false)
             if (!confirmSpecialChar && !confirmNumericChar && confirmLowerCasedChar === false && confirmUpperCasedChar === false) {
             alert ("At least one character type should be selected \nTry again!")
             showPrompts();
@@ -93,11 +92,10 @@ function generatePassword() {
         }
       }  
     }
-    // Calling function to return back password
+    // Calling function to return back the password
     return pwdResult;
 
-    // Function to prompt the user criteria
-    // Determine characters of password 
+    // Function to prompt the user criteria to determine characters of password 
     function showPrompts() {
       confirmSpecialChar = confirm("Would you like to include \nSpecial characters?" );
       confirmNumericChar = confirm("Would you like to include \nNumeric characters?" );
@@ -106,30 +104,19 @@ function generatePassword() {
     }
   } 
 }
-
-//! Function for getting a random element from an array
-function getRandom(specialChar, numericChar, lowerCasedChar, upperCasedChar) {
-  //return specialChar[Math.floor(Math.random() * specialChar.length)], 
- // numericChar[Math.floor(Math.random() * numericChar.length)], 
- // lowerCasedChar[Math.floor(Math.random() * lowerCasedChar.length)],
- // upperCasedChar[Math.floor(Math.random() * upperCasedChar.length)];
-}
-getRandom();
-
-//! Function to generate password with user input
-//function generatePassword() {}
     
 // Targeting all necessary HTML elements using unique identifiers
-//! Get references to the #generate element
+// Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
-//! Write password to the #password input
+// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
+  // Set passwordText to the test area on.HTML with the ID of password
   var passwordText = document.querySelector('#password');
-
+  // Update the text area with the new password
   passwordText.value = password;
 }
 
-//! Add event listener to generate button
+// Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
